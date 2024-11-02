@@ -7,7 +7,7 @@
     npm run star:dev 
 4.- crear repositorio en github
 5.- vincular proyecto con repositorio github
-    git remote add origin url del proyecto
+    git remote add origin url del proyecto: git remote add origin https://github.com/wilberlimon/tareas_itec.git
     git push -u origin master o (main)
 
 6.- configurar el proyecto vacio
@@ -69,7 +69,10 @@
                                                                          }
                                                                         }
         -agregar el modulo al archivo app.module.ts
-9.- 
+9.- buenas practicas de git
+    -crer main, dev, mi_rama_personal
+        para crar ramas: git checlout -b nombre_rama
+        subir la rama al repositorio de github: git push origin nombre_rama 
 
 
                                     
