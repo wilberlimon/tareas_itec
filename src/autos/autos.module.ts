@@ -4,6 +4,6 @@ import { AutosController } from './autos.controller';
 
 @Module({
   providers: [AutosService],
-  controllers: [AutosController]
+  controllers: [AutosController],
 })
 export class AutosModule {}

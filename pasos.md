@@ -78,5 +78,34 @@
     -crer main, dev, mi_rama_personal
         para crar ramas: git checlout -b nombre_rama
         subir la rama al repositorio de github: git push origin nombre_rama 
-10.- 
+
+10.- crear el CRUD
+    - crear el auto 
+        -module (creamos el archivo autos.module.ts (autos debe ser remplazao por el que estas haciendo))
+                                                    debemos crear una clase con los datos que almacenaran en la base de datos por ejemplo para auto
+                                                    export class AutosModel{
+                                                        Marca: string;
+                                                        Modelo: number;
+                                                        Año: string;
+                                                        Color: string;
+                                                        Estado: string;
+                                                    }
+                                                    y tambien tenemos que definir si el campo sera obligatorio o no para que no sea obligatorio se coloca lo siguiente ? antes de los dos puntos
+    - creamos una carpeta dto
+        -dto de entrda  (dentro de la carpeta dto creamos el archivo auto.input.dto.ts (auto debe ser el nombre del que se esta haciendo y ahi pegamos el codigo que creamos en el archivo autos.model.ts))
+        para consumir lo que se iso en el en el auto.input.dto.ts demos instanacia en el autos.controller.ts el y debe quedar de la siguiente manera   
+                            @Post('')
+                            crear(@Body() datosEntrada: AutosDatosEntrada) {
+                            return datosEntrada;
+                             }
+        decorador para habilitar campos en el body
+        @ApiProperty()
+        decorador para que los campos no sean obligatorios @ApiProperty({ required: false })
+        -configurar validaciones
+            nos vamos a la documentacion de nets.js
+            apartado de tecnicas y validaciones e instalamos las librerias para validaciones
+            npm i --save class-validator class-transformer
+            pegar e main lo siguiente app.useGlobalPipes(new ValidationPipe());
+        -configurar los sericios crd en nuestro .service.ts
+        -inicializar el service en nuestro .controller.ts
 
