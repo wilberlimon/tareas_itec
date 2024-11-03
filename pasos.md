@@ -7,20 +7,24 @@
     npm run star:dev 
 4.- crear repositorio en github
 5.- vincular proyecto con repositorio github
-    git remote add origin url del proyecto: git remote add origin https://github.com/wilberlimon/tareas_itec.git
+    git add .
+    git commit -m tarea2
+    git branch -M main
+    git remote add origin url del proyecto: enlace del repositorio
     git push -u origin master o (main)
 
 6.- configurar el proyecto vacio
-    6.1 habilitar swagger (ingrear documentacion OPENAPI (introduction)) 
+    6.1 habilitar swagger (ingrear documentacion OPENAPI (introduction))  npm install --save @nestjs/swagger
     6.2 habilitar linter (profeformateo) (ingrear a .prettierrc) ({
-                                                                    "printWidth": 120,
-                                                                    "tabWidth": 2,
+                                                                    "printWidth": 120, //amentamos este codigo
+                                                                    "tabWidth": 2, // aumentamos este codigo
                                                                     "singleQuote": true,
                                                                     "trailingComma": "all",
-                                                                    "endOfLine": "auto"
+                                                                    "endOfLine": "auto" // auemntamos este codigo
                                                                     })
-    - confgModule (ingresamos a Tecnicas y configuracion) 
+    - confgModule (ingresamos a Tecnicas y configuracion)  npm i --save @nestjs/config
         -crearmos nuestro archivo .env
+    - en el archivo app.modulo.ts colocar remplazar la siguiente linea de codigo imports: [], por la siguiente linea de codigo imports: [ConfigModule.forRoot()],
             -el archivo main.ts debe quedar de la siguiente manera
             
                                 import { NestFactory } from '@nestjs/core';
@@ -46,6 +50,7 @@
                                 console.log(`aplicacion esta corriendo en: ${await app.getUrl()} `); // colocar este codigo
                                 }
                                 bootstrap();
+	- en el archivo app.modulo.ts colocar remplazar la siguiente linea de codigo imports: [], por la siguiente linea de codigo imports: [ConfigModule.forRoot()],
                 
 7.- correr el proyecto
     corregir sino corre el proyecto
@@ -69,10 +74,9 @@
                                                                          }
                                                                         }
         -agregar el modulo al archivo app.module.ts
-9.- buenas practicas de git
+9.- buenas practicas de git 	(opcional)
     -crer main, dev, mi_rama_personal
         para crar ramas: git checlout -b nombre_rama
         subir la rama al repositorio de github: git push origin nombre_rama 
+10.- 
 
-
-                                    
