@@ -110,4 +110,11 @@
         -inicializar el service en nuestro .controller.ts
 11: conectar con la base de datos
     -configurar mongoose (mongodb)
-    -
+    -la colleccion para guardar datos (model, schema, document)(autos)
+    -implementar la collection para su uso, utilizando moongoosemodule.formficture(autos) (autos.module.ts)
+    -injectar el cliente de mongo para utilizarlo en el vervice
+         -guardado de datos
+         -recuperar datos
+         -actualizar datos
+         -borrar datos
+    -dto de respuesta(respuesta)

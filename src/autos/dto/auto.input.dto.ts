@@ -8,11 +8,11 @@ export class AutosDatosEntrada {
 
   @IsNotEmpty({ message: 'Modelo es requerido' })
   @ApiProperty()
-  Modelo: number;
+  Modelo: string;
 
   @IsNotEmpty({ message: 'Año es requerido' })
   @ApiProperty()
-  Año: string;
+  Año: number;
   @IsOptional({ message: 'el color es requerido' })
   @ApiProperty({ required: false, description: 'por seguridad seria bueno que introduzcas un color' })
   Color?: string;
