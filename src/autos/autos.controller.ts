@@ -14,6 +14,6 @@ export class AutosController {
 
   @Get()
   listar() {
-    return [];
+    return this.serviceAut.listarAutos();
   }
 }

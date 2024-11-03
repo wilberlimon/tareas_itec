@@ -108,4 +108,6 @@
             pegar e main lo siguiente app.useGlobalPipes(new ValidationPipe());
         -configurar los sericios crd en nuestro .service.ts
         -inicializar el service en nuestro .controller.ts
-
+11: conectar con la base de datos
+    -configurar mongoose (mongodb)
+    -
