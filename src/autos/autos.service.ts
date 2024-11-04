@@ -23,4 +23,22 @@ export class AutosService {
     const listarAutos = this.autosCollection.find();
     return listarAutos;
   }
+
+  async actualizarAutos(id: string) {
+    const autoencontrado = await this.autosCollection.findById(id);
+    if (autoencontrado) {
+      return this.autosCollection.updateOne({ _id: id }, autoencontrado).exec();
+    } else {
+      throw new Error('Auto no encontrado');
+    }
+  }
+
+  eliminarAutos(id: string) {
+    const autoencontrado = this.autosCollection.findById(id);
+    if (autoencontrado) {
+      return this.autosCollection.deleteOne({ id }).exec();
+    } else {
+      throw new Error('Auto no encontrado');
+    }
+  }
 }
