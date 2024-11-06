@@ -24,22 +24,28 @@ export class AutosService {
     return listarAutos;
   }
 
-  async actualizarAutos(id: string) {
-    console.log(id);
-    const autoencontrado = await this.autosCollection.findById(id);
-    if (autoencontrado) {
-      return this.autosCollection.updateOne({ _id: id }, autoencontrado).exec();
+  async actualizarAutos(_id: string) {
+    const autoEncontrado = await this.autosCollection.findOne({ _id });
+    if (autoEncontrado) {
+      autoEncontrado.Marca = autoEncontrado.Marca + ' (Se actualizo por Nissan)';
+      console.log('auto actualizado correctamente');
+      return this.autosCollection.updateOne({ _id }, autoEncontrado);
     } else {
       throw new Error('Auto no encontrado');
     }
   }
 
-  eliminarAutos(id: string) {
-    const autoencontrado = this.autosCollection.findById(id);
-    if (autoencontrado) {
-      return this.autosCollection.deleteOne({ id }).exec();
-    } else {
-      throw new Error('Auto no encontrado');
-    }
+  eliminarAutos(id) {
+    return this.autosCollection
+      .deleteOne({ _id: id })
+      .then((result) => {
+        if (result.deletedCount === 0) {
+          throw new Error('Auto no encontrado');
+        }
+        return result;
+      })
+      .catch((error) => {
+        throw new Error(`Error eliminando auto: ${error.message}`);
+      });
   }
 }
