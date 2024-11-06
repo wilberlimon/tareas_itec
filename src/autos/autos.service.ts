@@ -25,6 +25,7 @@ export class AutosService {
   }
 
   async actualizarAutos(id: string) {
+    console.log(id);
     const autoencontrado = await this.autosCollection.findById(id);
     if (autoencontrado) {
       return this.autosCollection.updateOne({ _id: id }, autoencontrado).exec();

@@ -17,14 +17,14 @@ export class AutosController {
     return this.serviceAut.listarAutos();
   }
 
-  @Patch('')
+  @Patch(':id')
   actualizar(@Param('id') id: string) {
     const respuesta = this.serviceAut.actualizarAutos(id);
     return respuesta;
   }
 
-  @Delete('')
-  eliminar(@Param('id') id: string) {
+  @Delete(':identificador')
+  eliminar(@Param('identificador') id: string) {
     const respuesta = this.serviceAut.eliminarAutos(id);
     return respuesta;
   }
