@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { AutosDatosEntrada } from './dto/auto.input.dto';
+import { AutosDatosEntrada, AutosDatosEntradaActualizar } from './dto/auto.input.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { AutosModel } from './autos.model';
 import { Model } from 'mongoose';
@@ -14,6 +14,7 @@ export class AutosService {
       Año: datosEntrada.Año,
       Color: datosEntrada.Color,
       Estado: datosEntrada.Estado,
+      Placa: datosEntrada.Placa,
     });
     const resultado = datosParaGuardar.save();
     return resultado;
@@ -24,12 +25,31 @@ export class AutosService {
     return listarAutos;
   }
 
-  async actualizarAutos(_id: string) {
-    const autoEncontrado = await this.autosCollection.findOne({ _id });
+  async actualizarAutos(id: string, datosEntradaaupdate: AutosDatosEntradaActualizar) {
+    const autoEncontrado = await this.autosCollection.findById(id);
+
     if (autoEncontrado) {
-      autoEncontrado.Marca = autoEncontrado.Marca + ' (Se actualizo por Nissan)';
+      console.log(datosEntradaaupdate);
+
+      // Actualizamos el documento directamente en la colección
+      const autoActualizado = await this.autosCollection
+        .findOneAndUpdate(
+          { _id: id }, // El criterio de búsqueda
+          {
+            // Los campos a actualizar
+            Marca: datosEntradaaupdate.Marca,
+            Modelo: datosEntradaaupdate.Modelo,
+            Año: datosEntradaaupdate.Año,
+            Color: datosEntradaaupdate.Color,
+            Estado: datosEntradaaupdate.Estado,
+            Placa: datosEntradaaupdate.Placa,
+          },
+          { new: true }, // Esto hace que se devuelva el documento actualizado
+        )
+        .exec();
+
       console.log('auto actualizado correctamente');
-      return this.autosCollection.updateOne({ _id }, autoEncontrado);
+      return autoActualizado;
     } else {
       throw new Error('Auto no encontrado');
     }

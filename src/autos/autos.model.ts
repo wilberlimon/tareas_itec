@@ -19,6 +19,9 @@ export class AutosModel {
 
   @Prop()
   Estado?: string;
+
+  @Prop()
+  Placa?: string;
 }
 
 export const AutosSchema = SchemaFactory.createForClass(AutosModel);

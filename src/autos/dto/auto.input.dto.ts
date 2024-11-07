@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, PartialType } from '@nestjs/swagger';
 import { IsNotEmpty, IsOptional } from 'class-validator';
 
 export class AutosDatosEntrada {
@@ -20,4 +20,10 @@ export class AutosDatosEntrada {
   @IsNotEmpty({ message: 'Estado es requerido' })
   @ApiProperty()
   Estado?: string;
+
+  @IsOptional({ message: 'Placa es requerido' })
+  @ApiProperty({ required: false })
+  Placa?: string;
 }
+
+export class AutosDatosEntradaActualizar extends PartialType(AutosDatosEntrada) {}

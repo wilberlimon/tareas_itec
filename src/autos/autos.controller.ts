@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
-import { AutosDatosEntrada } from './dto/auto.input.dto';
+import { AutosDatosEntrada, AutosDatosEntradaActualizar } from './dto/auto.input.dto';
 import { AutosService } from './autos.service';
 
 @Controller('autos')
@@ -18,8 +18,8 @@ export class AutosController {
   }
 
   @Patch(':id')
-  actualizar(@Param('id') id: string) {
-    const respuesta = this.serviceAut.actualizarAutos(id);
+  actualizar(@Param('id') id: string, @Body() datosPaActualizar: AutosDatosEntradaActualizar) {
+    const respuesta = this.serviceAut.actualizarAutos(id, datosPaActualizar);
     return respuesta;
   }
 
