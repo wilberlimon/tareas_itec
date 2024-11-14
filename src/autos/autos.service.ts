@@ -25,6 +25,9 @@ export class AutosService {
     return listarAutos;
   }
 
+  async detalleAutos(id: string) {
+    return await this.autosCollection.findById(id);
+  }
   async actualizarAutos(id: string, datosEntradaaupdate: AutosDatosEntradaActualizar) {
     const autoEncontrado = await this.autosCollection.findById(id);
 
