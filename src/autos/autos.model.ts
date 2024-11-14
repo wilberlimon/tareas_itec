@@ -28,6 +28,9 @@ export class AutosModel {
 
   @Prop()
   OtrasCaracteristicas?: string;
+
+  @Prop()
+  FechaIngreso: Date;
 }
 
 export const AutosSchema = SchemaFactory.createForClass(AutosModel);

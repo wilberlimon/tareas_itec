@@ -32,6 +32,10 @@ export class AutosDatosEntrada {
   @IsOptional({ message: 'Placa es requerido' })
   @ApiProperty({ required: false })
   OtrasCaracteristicas?: string;
+
+  @IsOptional({ message: 'Placa es requerido' })
+  @ApiProperty({ required: false })
+  FechaIngreso: Date;
 }
 
 export class AutosDatosEntradaActualizar extends PartialType(AutosDatosEntrada) {}

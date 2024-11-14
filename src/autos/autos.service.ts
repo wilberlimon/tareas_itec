@@ -17,6 +17,7 @@ export class AutosService {
       Chasis: datosEntrada.Chasis,
       Vin: datosEntrada.Vin,
       OtrasCaracteristicas: datosEntrada.OtrasCaracteristicas,
+      FechaIngreso: datosEntrada.FechaIngreso,
     });
     const resultado = datosParaGuardar.save();
     return resultado;
@@ -50,6 +51,7 @@ export class AutosService {
             Chasis: datosEntradaaupdate.Chasis,
             Vin: datosEntradaaupdate.Vin,
             OtrasCaracteristicas: datosEntradaaupdate.OtrasCaracteristicas,
+            FechaIngreso: datosEntradaaupdate.FechaIngreso,
           },
           { new: true }, // Esto hace que se devuelva el documento actualizado
         )
