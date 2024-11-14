@@ -12,16 +12,22 @@ export class AutosModel {
   Modelo: string;
 
   @Prop()
-  Año: number;
+  Anio: number;
 
   @Prop()
   Color?: string;
 
   @Prop()
-  Estado?: string;
+  Tipo?: string;
 
   @Prop()
-  Placa?: string;
+  Chasis: string;
+
+  @Prop()
+  Vin: string;
+
+  @Prop()
+  OtrasCaracteristicas?: string;
 }
 
 export const AutosSchema = SchemaFactory.createForClass(AutosModel);

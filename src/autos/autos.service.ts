@@ -11,10 +11,12 @@ export class AutosService {
     const datosParaGuardar = new this.autosCollection({
       Marca: datosEntrada.Marca,
       Modelo: datosEntrada.Modelo,
-      Año: datosEntrada.Año,
+      Anio: datosEntrada.Anio,
       Color: datosEntrada.Color,
-      Estado: datosEntrada.Estado,
-      Placa: datosEntrada.Placa,
+      Tipo: datosEntrada.Tipo,
+      Chasis: datosEntrada.Chasis,
+      Vin: datosEntrada.Vin,
+      OtrasCaracteristicas: datosEntrada.OtrasCaracteristicas,
     });
     const resultado = datosParaGuardar.save();
     return resultado;
@@ -42,10 +44,12 @@ export class AutosService {
             // Los campos a actualizar
             Marca: datosEntradaaupdate.Marca,
             Modelo: datosEntradaaupdate.Modelo,
-            Año: datosEntradaaupdate.Año,
+            Anio: datosEntradaaupdate.Anio,
             Color: datosEntradaaupdate.Color,
-            Estado: datosEntradaaupdate.Estado,
-            Placa: datosEntradaaupdate.Placa,
+            Tipo: datosEntradaaupdate.Tipo,
+            Chasis: datosEntradaaupdate.Chasis,
+            Vin: datosEntradaaupdate.Vin,
+            OtrasCaracteristicas: datosEntradaaupdate.OtrasCaracteristicas,
           },
           { new: true }, // Esto hace que se devuelva el documento actualizado
         )

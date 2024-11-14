@@ -12,18 +12,26 @@ export class AutosDatosEntrada {
 
   @IsNotEmpty({ message: 'Año es requerido' })
   @ApiProperty()
-  Año: number;
+  Anio: number;
   @IsOptional({ message: 'el color es requerido' })
   @ApiProperty({ required: false, description: 'por seguridad seria bueno que introduzcas un color' })
-  Color?: string;
+  Color: string;
 
-  @IsNotEmpty({ message: 'Estado es requerido' })
+  @IsNotEmpty({ message: 'Tipo es requerido' })
   @ApiProperty()
-  Estado?: string;
+  Tipo?: string;
+
+  @IsOptional({ message: 'Chasis es Requerido' })
+  @ApiProperty({ required: false })
+  Chasis: string;
+
+  @IsOptional({ message: 'Vin es Requerido' })
+  @ApiProperty({ required: false })
+  Vin: string;
 
   @IsOptional({ message: 'Placa es requerido' })
   @ApiProperty({ required: false })
-  Placa?: string;
+  OtrasCaracteristicas?: string;
 }
 
 export class AutosDatosEntradaActualizar extends PartialType(AutosDatosEntrada) {}
