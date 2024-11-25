@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { AutosDatosEntrada, AutosDatosEntradaActualizar } from './dto/auto.input.dto';
 import { AutosService } from './autos.service';
 
@@ -10,6 +10,11 @@ export class AutosController {
   crear(@Body() datosEntrada: AutosDatosEntrada) {
     const respuesta = this.serviceAut.registrarAutos(datosEntrada);
     return respuesta;
+  }
+
+  @Get('buscar')
+  buscar(@Query('Modelo') Modelo?: string, @Query('Marca') Marca?: string, @Query('Tipo') Tipo?: string) {
+    return this.serviceAut.buscarAuto(Modelo, Marca, Tipo);
   }
 
   @Get()

@@ -28,6 +28,23 @@ export class AutosService {
     return listarAutos;
   }
 
+  async buscarAuto(Modelo?: string, Marca?: string, Tipo?: string) {
+    if (Modelo && Modelo.length >= 1) {
+      const Auto = await this.autosCollection.find({ Modelo: Modelo });
+      return Auto;
+    }
+    if (Marca && Marca.length >= 1) {
+      const Auto = await this.autosCollection.find({ Marca: Marca });
+      return Auto;
+    }
+    if (Tipo && Tipo.length >= 1) {
+      const Auto = await this.autosCollection.find({ Tipo: Tipo });
+      return Auto;
+    }
+
+    return await this.autosCollection.find();
+  }
+
   async detalleAutos(id: string) {
     return await this.autosCollection.findById(id);
   }
