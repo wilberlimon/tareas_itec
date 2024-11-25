@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { SexoEnum } from '../clientes.model';
-import { IsString, IsOptional, IsEnum, IsNotEmpty, IsEmail, IsPhoneNumber } from 'class-validator';
+import { IsString, IsOptional, IsEnum, IsNotEmpty, IsEmail } from 'class-validator';
 
 export class CreateClienteDto {
   @ApiProperty({ description: 'Primer nombre del cliente', required: true })
@@ -24,7 +24,7 @@ export class CreateClienteDto {
   apellidoMaterno?: string;
 
   @ApiProperty({ description: 'Fecha de nacimiento del cliente', required: true })
-  fechaNacimiento: Date; // Campo sin validación
+  fechaNacimiento: Date;
 
   @ApiProperty({ description: 'Sexo del cliente', enum: SexoEnum, required: true })
   @IsEnum(SexoEnum, { message: 'El sexo debe ser masculino o femenino' })
@@ -41,10 +41,10 @@ export class CreateClienteDto {
   @IsNotEmpty({ message: 'La dirección es obligatoria' })
   direccion: string;
 
-  @ApiProperty({ description: 'Teléfono del cliente', required: true })
-  @IsPhoneNumber('BO', { message: 'El teléfono debe ser válido para Bolivia' })
-  @IsNotEmpty({ message: 'El teléfono es obligatorio' })
-  telefono: string;
+  @ApiProperty({ description: 'Teléfono del cliente', required: false })
+  @IsString()
+  @IsOptional() // El campo sigue siendo opcional
+  telefono?: string; // Se asegura que el tipo sea string para insertarlo correctamente
 
   @ApiProperty({ description: 'Correo electrónico del cliente', required: true })
   @IsEmail({}, { message: 'El correo electrónico debe ser válido' })
