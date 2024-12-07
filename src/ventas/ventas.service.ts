@@ -1,26 +1,47 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { CreateVentaDto } from './dto/create-venta.dto';
 import { UpdateVentaDto } from './dto/update-venta.dto';
+import { Ventas } from './venta.model';
 
 @Injectable()
 export class VentasService {
-  create(createVentaDto: CreateVentaDto) {
-    return 'This action adds a new venta';
+  constructor(@InjectModel(Ventas.name) private ventasModel: Model<Ventas>) {}
+
+  // Crear una nueva venta
+  async create(createVentaDto: CreateVentaDto) {
+    const newVenta = new this.ventasModel(createVentaDto);
+    return await newVenta.save();
   }
 
-  findAll() {
-    return `This action returns all ventas`;
+  // Obtener todas las ventas
+  async findAll() {
+    return await this.ventasModel
+      .find()
+      .populate('Cliente', 'id nombre1 nombre2 apellidoPaterno apellidoMaterno cedulaIdentidad')
+      .populate('Auto', 'id Marca Color Modelo Anio')
+      .exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} venta`;
+  // Obtener una venta por ID
+  async findOne(id: string) {
+    return await this.ventasModel
+      .findById(id)
+      .populate('Cliente', 'id nombre1 nombre2 apellidoPaterno apellidoMaterno cedulaIdentidad')
+      .populate('Auto', 'id Marca Color Modelo Anio')
+      .exec();
   }
 
-  update(id: number, updateVentaDto: UpdateVentaDto) {
-    return `This action updates a #${id} venta`;
+  // Actualizar una venta por ID
+  async update(id: string, updateVentaDto: UpdateVentaDto) {
+    return await this.ventasModel.findByIdAndUpdate(id, updateVentaDto, {
+      new: true, // Devuelve el objeto actualizado
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} venta`;
+  // Eliminar una venta por ID
+  async remove(id: string) {
+    return await this.ventasModel.findByIdAndDelete(id);
   }
 }

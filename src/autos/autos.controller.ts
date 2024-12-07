@@ -13,8 +13,8 @@ export class AutosController {
   }
 
   @Get('buscar')
-  buscar(@Query('Modelo') Modelo?: string, @Query('Marca') Marca?: string, @Query('Tipo') Tipo?: string) {
-    return this.serviceAut.buscarAuto(Modelo, Marca, Tipo);
+  buscar(@Query('Marca') Marca?: string) {
+    return this.serviceAut.buscarAuto(Marca);
   }
 
   @Get()
