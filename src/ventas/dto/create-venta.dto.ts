@@ -14,7 +14,7 @@ export class CreateVentaDto {
   @ApiProperty({ description: 'ID del auto' })
   @IsMongoId()
   @IsNotEmpty()
-  Auto: string;
+  Autos: string;
 
   @ApiProperty({ description: 'Costo de la venta' })
   @IsString()

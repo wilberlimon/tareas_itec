@@ -10,13 +10,13 @@ export class VentasController {
   constructor(private readonly ventasService: VentasService) {}
 
   // Crear una nueva venta
-  @Post()
+  @Post('registrar')
   create(@Body() createVentaDto: CreateVentaDto) {
     return this.ventasService.create(createVentaDto);
   }
 
   // Obtener todas las ventas
-  @Get()
+  @Get('listar')
   findAll() {
     return this.ventasService.findAll();
   }

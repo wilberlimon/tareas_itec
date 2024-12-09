@@ -20,7 +20,7 @@ export class VentasService {
     return await this.ventasModel
       .find()
       .populate('Cliente', 'id nombre1 nombre2 apellidoPaterno apellidoMaterno cedulaIdentidad')
-      .populate('Auto', 'id Marca Color Modelo Anio')
+      .populate('Autos', 'id Marca Color Modelo Anio')
       .exec();
   }
 
@@ -29,7 +29,7 @@ export class VentasService {
     return await this.ventasModel
       .findById(id)
       .populate('Cliente', 'id nombre1 nombre2 apellidoPaterno apellidoMaterno cedulaIdentidad')
-      .populate('Auto', 'id Marca Color Modelo Anio')
+      .populate('Autos', 'id Marca Color Modelo Anio')
       .exec();
   }
 

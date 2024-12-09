@@ -11,7 +11,7 @@ export class Ventas {
   Cliente: Types.ObjectId;
 
   @Prop({ type: Types.ObjectId, ref: 'AutosModel', required: true })
-  Auto: Types.ObjectId;
+  Autos: Types.ObjectId;
 
   @Prop()
   Costo: string;

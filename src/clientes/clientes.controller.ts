@@ -15,7 +15,7 @@ export class ClientesController {
   }
 
   // Obtener todos los clientes
-  @Get()
+  @Get('Listar')
   async findAll() {
     return await this.clientesService.findAll();
   }
