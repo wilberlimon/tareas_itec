@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { usuario, UsuarioDocument } from './usuario.model';
@@ -9,7 +9,8 @@ import { Model } from 'mongoose';
 export class UsuariosService {
   constructor(@InjectModel(usuario.name) private readonly usuariosCollection: Model<UsuarioDocument>) {}
   async create(createUsuarioDto: CreateUsuarioDto) {
-    if (createUsuarioDto.password !== createUsuarioDto.passwordConfirm) throw new Error('Las contraseñas no coinciden');
+    if (createUsuarioDto.password !== createUsuarioDto.passwordConfirm)
+      throw new BadRequestException('Las contraseñas no coinciden');
 
     const usuarioACrear = new this.usuariosCollection({
       email: createUsuarioDto.email,
