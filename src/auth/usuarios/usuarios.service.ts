@@ -12,6 +12,10 @@ export class UsuariosService {
     if (createUsuarioDto.password !== createUsuarioDto.passwordConfirm)
       throw new BadRequestException('Las contraseñas no coinciden');
 
+    const usuarioEncontrado = await this.usuariosCollection.findOne({ email: createUsuarioDto.email });
+    if (usuarioEncontrado)
+      throw new BadRequestException('El correo ya se encuentra registrado con un usuario registrado');
+
     const usuarioACrear = new this.usuariosCollection({
       email: createUsuarioDto.email,
       password: createUsuarioDto.password,
