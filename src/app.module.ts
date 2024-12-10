@@ -6,6 +6,7 @@ import { AutosModule } from './autos/autos.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ClientesModule } from './clientes/clientes.module';
 import { VentasModule } from './ventas/ventas.module';
+import { AutenticacionModule } from './autenticacion/autenticacion.module';
 
 @Module({
   imports: [
@@ -13,7 +14,8 @@ import { VentasModule } from './ventas/ventas.module';
     AutosModule,
     MongooseModule.forRoot('mongodb://127.0.0.1:27017/autosdb'),
     ClientesModule,
-    VentasModule, // Asegúrate de que el módulo de Ventas esté importado
+    VentasModule,
+    AutenticacionModule, // Asegúrate de que el módulo de Ventas esté importado
   ],
   controllers: [AppController],
   providers: [AppService],
